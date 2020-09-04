@@ -7,17 +7,17 @@
 #include <errno.h>
 
 // copy function from one file to another
-int cpy(char *fnDest, char *fnSrc) {
-    FILE *fpDest, *fpSrc;
+int cpy(char *from, char *to) {
+    FILE *from, *to;
     int c;
 
-    if ((fpDest = fopen(fnDest, "w")) && (fpSrc = fopen(fnSrc, "r"))) {
-        while ((c = getc(fpSrc)) != EOF)
-            putc(c, fpDest);    // copying characters one by one 
+    if ((to = fopen(to, "w")) && (from = fopen(from, "r"))) {
+        while ((c = getc(from)) != EOF)
+            putc(c, from);    // copying characters one by one 
 
 
-        fclose(fpSrc);
-        fclose(fpDest);         // closing the files
+        fclose(from);
+        fclose(to);         // closing the files
 
         return 0;
     }
